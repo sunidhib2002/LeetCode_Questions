@@ -11,62 +11,39 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        if (head == NULL) {
-            return head;
-        }
-        
-        if (head -> next == NULL) {
-            return head;
-        }
-        
+        ListNode *dummy = new ListNode(-1);
         ListNode *curr = head;
-        
-        // if (head != NULL && head -> next != NULL) {
-        //     if (head -> val == head -> next -> val) {
-        //         while (head != NULL && head -> next != NULL && head -> val == head -> next -> val) {
-        //             head = head -> next;
-        //         }
-        //         if (head != NULL) {
-        //             head = head -> next;
-        //         }
-        //     } 
-        // }
         
         while (curr != NULL && curr -> next != NULL && curr -> next -> next != NULL) {
             if (curr == head && curr -> val == curr -> next -> val) {
-                // cout<<"hello"<<endl;
                 while (curr != NULL && curr -> next != NULL && curr -> val == curr -> next -> val) {
                     curr = curr -> next;
                 }
-                if (curr != NULL) {
-                    head = curr -> next;
-                    curr = head;
-                }
+                head = curr -> next;
+                curr = head;
             } else if (curr -> next -> val == curr -> next -> next -> val) {
-                ListNode *start = curr;
-                curr = curr -> next;
-                while (curr != NULL && curr -> next != NULL && curr -> val == curr -> next -> val) {
+                ListNode *temp = curr;
+                while (curr != NULL && curr -> next != NULL && curr -> next -> next != NULL && curr -> next -> val == curr -> next -> next -> val) {
                     curr = curr -> next;
                 }
-                start -> next = curr -> next;
-                curr = start;
+                if (curr -> next == NULL) {
+                    temp -> next = NULL;   
+                } else {
+                    temp -> next = curr -> next -> next;
+                }
+                curr = temp;
             } else {
                 curr = curr -> next;
             }
         }
-        
-        if (head != NULL && head -> next != NULL) {
+        if (head == NULL || (head != NULL && head -> next == NULL)) {
+            return head;
+        } else if (head != NULL && head -> next != NULL && head -> next -> next == NULL) {
             if (head -> val == head -> next -> val) {
-                while (head != NULL && head -> next != NULL && head -> val == head -> next -> val) {
-                    head = head -> next;
-                }
-                if (head != NULL) {
-                    head = head -> next;
-                }
-            } 
+                head = NULL;
+            }  
         }
         
-        
-        return head;  
+        return head; 
     }
 };
