@@ -35,7 +35,7 @@ maximum profit of 127 (100+27).</span></pre>
 
 <p><br>
 <span style="font-size:18px"><strong>Your Task</strong> :<br>
-You don't need to read input or print anything. Your task is to complete the function <strong>JobScheduling()</strong> which takes an integer <strong>N</strong> and an array of Jobs(Job id, Deadline,&nbsp;Profit) as input and returns the count of jobs and maximum profit.</span></p>
+You don't need to read input or print anything. Your task is to complete the function <strong>JobScheduling()</strong> which takes an integer <strong>N</strong> and an array of Jobs(Job id, Deadline,&nbsp;Profit) as input and returns the count of jobs and maximum profit as a list or vector of 2 elements.</span></p>
 
 <p><br>
 <span style="font-size:18px"><strong>Expected Time Complexity</strong>: O(NlogN)<br>
