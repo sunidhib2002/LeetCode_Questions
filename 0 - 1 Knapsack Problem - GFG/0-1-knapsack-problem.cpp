@@ -11,7 +11,6 @@ class Solution
         if (W == 0) {
             return 0;
         }
-        
         if (n == 0) {
             return 0;
         }
@@ -23,7 +22,6 @@ class Solution
         if (wt[n - 1] > W) {
             return dp[W][n] = knap(W, wt, val, n - 1, dp);
         }
-        
         return dp[W][n] = max(knap(W, wt, val, n - 1, dp), val[n - 1] + knap(W - wt[n - 1], wt, val, n - 1, dp));
     }
     //Function to return max value that can be put in knapsack of capacity W.
