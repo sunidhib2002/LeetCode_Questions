@@ -21,7 +21,7 @@ class Solution
     int activitySelection(vector<int> start, vector<int> end, int n)
     {
         activity arr[n];
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < start.size(); i++) {
             arr[i].begin = start[i];
             arr[i].finish = end[i];
         }
@@ -29,7 +29,7 @@ class Solution
         int j = 0;
         int cnt = 1;
         for (int i = 1; i < n; i++) {
-            if (arr[i].begin > arr[j].finish) {
+            if (arr[j].finish < arr[i].begin) {
                 j = i;
                 cnt++;
             }
