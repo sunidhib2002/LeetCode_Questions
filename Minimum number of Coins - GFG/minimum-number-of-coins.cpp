@@ -11,20 +11,17 @@ class Solution{
 public:
     vector<int> minPartition(int N)
     {
-        vector<int> coins = {2000, 500, 200, 100, 50, 20, 10, 5, 2, 1};
-        int i = 0;
+        vector<int> money = {2000, 500, 200, 100, 50, 20, 10, 5, 2, 1};
         vector<int> ans;
+        int i = 0;
         while (N > 0) {
-            if (coins[i] > N) {
-                i++;
-            }  else {
-                int cnt = N / coins[i];
-                while (cnt > 0) {
-                    ans.push_back(coins[i]);
-                    cnt -= 1;
+            if (money[i] <= N) {
+                while  (money[i] <= N) {
+                    N -= money[i];
+                    ans.push_back(money[i]);
                 }
-                N %= coins[i];
             }
+            i++;
         }
         return ans;
         // code here
