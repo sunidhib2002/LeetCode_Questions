@@ -13,19 +13,22 @@ public:
         for (int i = 0; i < n; i++) {
             stock.push_back({price[i], i + 1});
         }
+        int cnt = 0;
         sort(stock.begin(), stock.end());
-        int total = 0;
         for (int i = 0; i < stock.size(); i++) {
+            // cout<<stock[i].first<<endl;
             int val = k / stock[i].first;
-            if (val > stock[i].second) {
-                total += stock[i].second;
+            // cout<<"val "<<val<<endl;
+            if (val >= stock[i].second) {
+                cnt += stock[i].second;
                 k -= (stock[i].first * stock[i].second);
             } else {
-                total += val;
+                cnt += val;
                 k -= (stock[i].first * val);
             }
+            // cout<<k<<" "<<cnt<<endl;
         }
-        return total;
+        return cnt;
     }
 };
 
